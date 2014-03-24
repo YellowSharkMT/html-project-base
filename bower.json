@@ -1,0 +1,21 @@
+{
+  "name": "HTML Project Base",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "twitter": "~3.1.1"
+  },
+  "devDependencies": {
+    "modernizr": "~2.7.2",
+    "bootstrap-social": "~4.2.1",
+    "twitter": "~3.1.1"
+  }
+}
