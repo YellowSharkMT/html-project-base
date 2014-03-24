@@ -1,6 +1,6 @@
 # HTML Project Base
 
-Requires [NodeJS](http://nodejs.org), [Bower](http://bower.io/), and [Grunt](http://gruntjs.com/) (supports [Live Reload](https://www.npmjs.org/package/livereload), but not required). Based on [Twitter Bootstrap](https://github.com/twitter/bootstrap.git), and includes [Bootstrap Social](http://lipis.github.io/bootstrap-social/), [Font Awesome](http://lipis.github.io/bootstrap-social/), [jQuery](http://jquery.com), and [Modernizr](http://modernizr.com/). If you wish to use the included fabfile, you'll need to have [Fabric](http://fabfile.org) installed on your system.
+Requires [NodeJS](http://nodejs.org), [Bower](http://bower.io/), and [Grunt](http://gruntjs.com/) (supports [Live Reload](https://www.npmjs.org/package/livereload), but not required). Based on [Twitter Bootstrap](https://github.com/twitter/bootstrap.git), and includes [Bootstrap Social](http://lipis.github.io/bootstrap-social/), [Font Awesome](http://lipis.github.io/bootstrap-social/), [jQuery](http://jquery.com), and [Modernizr](http://modernizr.com/). Also includes the [jQuery Mobile](http://jquerymobile.com/) Touch library, which adds functionality to recognize touchscreen swipe event. If you wish to use the included fabfile, you'll need to have [Fabric](http://fabfile.org) installed on your system.
 
 The `/public` folder is where HTML documents should go, and then serve that folder with your static webserver of choice.
 
