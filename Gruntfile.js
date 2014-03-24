@@ -31,7 +31,6 @@ module.exports = function (grunt) {
                 src: [
                     bower + 'twitter/dist/css/bootstrap.min.css',
                     bower + 'bootstrap-social/bootstrap-social.css',
-                    // Bootstrap social depends on font-awesome
                     bower + 'font-awesome/css/font-awesome.min.css',
                     local_static + 'css/style.css'
                 ],
@@ -41,10 +40,11 @@ module.exports = function (grunt) {
                 src: [
                     bower + 'jquery/dist/jquery.min.js',
                     bower + 'modernizr/modernizr.js',
-                    // Carousel requires Transition
-                    bower + 'bootstrap/js/transition.js',
-                    bower + 'bootstrap/js/carousel.js',
-                    // Custom build from the JQ Mobile website
+                    // Twitter Bootstrap: include the whole thing...
+                    bower + 'bootstrap/dist/js/bootstrap.js',
+                    // ... OR, just include the bits you want...
+                    //bower + 'bootstrap/js/transition.js',
+                    //bower + 'bootstrap/js/carousel.js',
                     local_static + 'js/jquery-mobile-touch.min.js',
                     local_static + 'js/source/*.js'
                 ],
@@ -63,6 +63,7 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: local_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten:true}
                 ]
+
             }
         },
         copy: {
