@@ -2,9 +2,13 @@
 
 Requires [NodeJS](http://nodejs.org), [Bower](http://bower.io/), and [Grunt](http://gruntjs.com/) (supports [Live Reload](https://www.npmjs.org/package/livereload), but not required). Based on [Twitter Bootstrap](https://github.com/twitter/bootstrap.git), and includes [Bootstrap Social](http://lipis.github.io/bootstrap-social/), [Font Awesome](http://lipis.github.io/bootstrap-social/), [jQuery](http://jquery.com), and [Modernizr](http://modernizr.com/). Also includes the [jQuery Mobile](http://jquerymobile.com/) Touch library, which adds functionality to recognize touchscreen swipe event. If you wish to use the included fabfile, you'll need to have [Fabric](http://fabfile.org) installed on your system.
 
-The `/public` folder is where HTML documents should go, and then serve that folder with your static webserver of choice.
+There are a few opinions/expectations:
+- HTML pages will be generated from Jade templates
+- CSS will be generated from LESS
 
-Grunt collects all static assets from the various Bower components and local source folders, minifies CSS & JS, and populates the `/public/static` directory with the required assets.
+The project should be served from the `/public` folder.
+
+Grunt collects all static assets from the various Bower components and local source folders, minifies CSS & JS, and populates the `/public/static` directory with the compiled assets.
 
 The fabfile `deploy` task uses `rsync -ravz` to upload local webroot files (./public) to the remote webroot.
 
@@ -14,4 +18,4 @@ To install the required Bower components and Node modules:
 
     $ bower install && npm install
 
-Remember, to build the static files, you'll need to run Grunt. It's set up to watch local files, so you basically just need to fire it up when you start coding, and leave it running while you develop.
+Remember: this project requires Grunt. The default task does everything, and ends with watch/livereload, so you basically just need to fire it up when you start coding, and leave it running while you develop.
