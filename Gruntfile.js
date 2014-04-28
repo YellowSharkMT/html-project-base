@@ -79,10 +79,21 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        jade: {
+            release: {
+                options: {
+                    pretty: true,
+                    data: grunt.file.readJSON('src/html/locals.json')
+                },
+                files: {
+                    "public/index.html": "src/html/index.jade"
+                }
+            }
+        },
         watch: {
             templates: {
-                files: 'public/**/*.html',
-                tasks: [],
+                files: ['src/html/**/*.jade','src/html/**/*.json'],
+                tasks: ['jade'],
                 options: {
                     livereload: true
                 }
@@ -111,6 +122,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-livereload');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-jade');
 
-    grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify', 'copy', 'watch']);
+    grunt.registerTask('default', ['jade', 'less', 'concat', 'cssmin', 'uglify', 'copy', 'watch']);
 };
