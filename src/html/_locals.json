@@ -1,0 +1,10 @@
+{
+    "pageTitle": "HTML Project Base",
+    "metaDescription": "This is a base for a static HTML project",
+
+    "pages":{
+        "home":{
+            "dummyContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget est mi, et porttitor dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque commodo semper luctus. Integer tristique enim ut arcu consectetur imperdiet. Sed imperdiet leo mollis felis mattis sed venenatis orci scelerisque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis dignissim mi metus, quis pharetra velit. Donec quam lectus, consequat quis consequat in, facilisis sed enim. In hac habitasse platea dictumst. Duis sem ipsum, pellentesque et eleifend scelerisque, tempor non."
+        }
+    }
+}

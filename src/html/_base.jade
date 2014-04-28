@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title=pageTitle
+        meta(name="description", content=metaDescription)
+        meta(name="viewport", content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,user-scalable=yes")
+        link(rel="stylesheet", href="static/css/production.min.css")
+
+    body
+        .container
+            block content
+
+        script(src="static/js/production.min.js")

@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         },
         cssmin: {
             production: {
-                files:{
+                files: {
                     'public/static/css/production.min.css': [public_static + 'css/production.css']
                 }
             }
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
         uglify: {
             production: {
                 files: [
-                    {expand: true, cwd: public_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten:true}
+                    {expand: true, cwd: public_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten: true}
                 ]
 
             }
@@ -81,19 +81,25 @@ module.exports = function (grunt) {
             release: {
                 options: {
                     pretty: true,
-                    data: grunt.file.readJSON('src/html/locals.json')
+                    data: grunt.file.readJSON('src/html/_locals.json')
                 },
-                files: {
-                    "public/index.html": "src/html/index.jade"
-                }
+                files: [
+                    {
+                        cwd: 'src/html',
+                        src: ['**/*.jade', '!**/_*.jade'],
+                        dest: 'public',
+                        expand: true,
+                        ext: '.html'
+                    }
+                ]
             }
         },
-        clean:{
+        clean: {
             devcss: [public_static + 'css/*.build.css']
         },
         watch: {
             templates: {
-                files: ['src/html/**/*.jade','src/html/**/*.json'],
+                files: ['src/html/**/*.jade', 'src/html/**/*.json'],
                 tasks: ['jade'],
                 options: {
                     livereload: true
