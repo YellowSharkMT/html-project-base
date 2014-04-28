@@ -4,7 +4,6 @@ module.exports = function (grunt) {
     var debug_scripts = false;
 
     var public_static = 'public/static/',
-        local_static = 'static/',
         bower = 'bower_components/';
 
     grunt.initConfig({
@@ -45,10 +44,9 @@ module.exports = function (grunt) {
                     // ... OR, just include the bits you want...
                     //bower + 'bootstrap/js/transition.js',
                     //bower + 'bootstrap/js/carousel.js',
-                    local_static + 'js/jquery-mobile-touch.min.js',
-                    local_static + 'js/source/*.js'
+                    'src/js/**/*.js'
                 ],
-                dest: local_static + 'js/production.js'
+                dest: public_static + 'js/production.js'
             }
         },
         cssmin: {
@@ -61,7 +59,7 @@ module.exports = function (grunt) {
         uglify: {
             production: {
                 files: [
-                    {expand: true, cwd: local_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten:true}
+                    {expand: true, cwd: public_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten:true}
                 ]
 
             }
@@ -102,14 +100,14 @@ module.exports = function (grunt) {
                 }
             },
             less: {
-                files: local_static + 'less/**/*.less',
+                files: 'src/less/**/*.less',
                 tasks: ['less', 'concat', 'clean:devcss'],
                 options: {
                     livereload: true
                 }
             },
             js: {
-                files: local_static + 'js/source/**/*.js',
+                files: 'src/js/**/*.js',
                 tasks: ['uglify', 'concat'],
                 options: {
                     livereload: true
