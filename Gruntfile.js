@@ -17,6 +17,8 @@ module.exports = function (grunt) {
          * 3. [cssmin] Minify CSS (saves to public)
          * 4. [uglify] Minify JS (saves to public)
          * 5. [copy] Copies fonts & images from Bower & local (saves to public)
+         * 6. [jade] Compiles local jade templates to public/.
+         * 7. [clean] Cleans up files form the build process.
          */
         less: {
             local: {
@@ -126,5 +128,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jade');
 
-    grunt.registerTask('default', ['jade', 'less', 'concat', 'cssmin', 'uglify', 'copy', 'clean', 'watch']);
+    grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify', 'copy', 'jade', 'clean', 'watch']);
 };
