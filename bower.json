@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "modernizr": "~2.7.2",
-    "bootstrap-social": "~4.2.1",
+    "bootstrap-social": "4.3.0",
     "twitter": "~3.1.1"
   }
 }
