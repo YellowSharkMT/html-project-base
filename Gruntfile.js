@@ -128,5 +128,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jade');
 
-    grunt.registerTask('default', ['jade', 'less', 'concat', 'cssmin', 'uglify', 'copy', 'watch']);
+    grunt.registerTask('default', ['jade', 'less', 'concat', 'cssmin', 'uglify', 'copy', 'clean', 'watch']);
 };
