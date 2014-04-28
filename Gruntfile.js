@@ -1,8 +1,6 @@
 /*global module*/
 module.exports = function (grunt) {
     "use strict";
-    var debug_scripts = false;
-
     var public_static = 'public/static/',
         bower = 'bower_components/';
 
