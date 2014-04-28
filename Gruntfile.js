@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         less: {
             local: {
                 files: [
-                    {expand: true, cwd: local_static + 'less', src: '**/*.less', dest: local_static + 'css', ext: '.css'}
+                    {expand: true, cwd: 'src/less', src: '**/*.less', dest: public_static + 'css', ext: '.build.css'}
                 ]
             }
         },
@@ -32,9 +32,9 @@ module.exports = function (grunt) {
                     bower + 'twitter/dist/css/bootstrap.min.css',
                     bower + 'bootstrap-social/bootstrap-social.css',
                     bower + 'font-awesome/css/font-awesome.min.css',
-                    local_static + 'css/style.css'
+                    public_static + 'css/**.build.css'
                 ],
-                dest: local_static + 'css/production.css'
+                dest: public_static + 'css/production.css'
             },
             js: {
                 src: [
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
         cssmin: {
             production: {
                 files:{
-                    'public/static/css/production.min.css': [local_static + 'css/production.css']
+                    'public/static/css/production.min.css': [public_static + 'css/production.css']
                 }
             }
         },
@@ -90,6 +90,9 @@ module.exports = function (grunt) {
                 }
             }
         },
+        clean:{
+            devcss: [public_static + 'css/*.build.css']
+        },
         watch: {
             templates: {
                 files: ['src/html/**/*.jade','src/html/**/*.json'],
@@ -100,7 +103,7 @@ module.exports = function (grunt) {
             },
             less: {
                 files: local_static + 'less/**/*.less',
-                tasks: ['less', 'concat'],
+                tasks: ['less', 'concat', 'clean:devcss'],
                 options: {
                     livereload: true
                 }
