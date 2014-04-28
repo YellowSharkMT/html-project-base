@@ -69,7 +69,7 @@ module.exports = function (grunt) {
         copy: {
             local: {
                 files: [
-                    {expand: true, cwd: local_static + 'images/', src: '**', dest: public_static + 'images/'}
+                    {expand: true, cwd: 'src/images/', src: '**', dest: public_static + 'images/'}
                 ]
             },
             bower: {
