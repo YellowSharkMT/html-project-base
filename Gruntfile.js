@@ -21,14 +21,20 @@ module.exports = function (grunt) {
         less: {
             local: {
                 files: [
-                    {expand: true, cwd: 'src/less', src: '**/*.less', dest: public_static + 'css', ext: '.build.css'}
+                    {
+                        expand: true,
+                        cwd: 'src/less',
+                        src: ['**/*.less', '**/_*.less'],
+                        dest: public_static + 'css',
+                        ext: '.build.css'
+                    }
                 ]
             }
         },
         concat: {
             css: {
                 src: [
-                    bower + 'twitter/dist/css/bootstrap.min.css',
+                    bower + 'bootstrap/dist/css/bootstrap.min.css',
                     bower + 'bootstrap-social/bootstrap-social.css',
                     bower + 'font-awesome/css/font-awesome.min.css',
                     public_static + 'css/**.build.css'
@@ -59,7 +65,14 @@ module.exports = function (grunt) {
         uglify: {
             production: {
                 files: [
-                    {expand: true, cwd: public_static + 'js', src: 'production.js', dest: public_static + 'js', ext: '.min.js', flatten: true}
+                    {
+                        expand: true,
+                        cwd: public_static + 'js',
+                        src: 'production.js',
+                        dest: public_static + 'js',
+                        ext: '.min.js',
+                        flatten: true
+                    }
                 ]
 
             }
@@ -73,7 +86,7 @@ module.exports = function (grunt) {
             bower: {
                 files: [
                     {expand: true, cwd: bower + 'font-awesome/fonts', src: '**', dest: public_static + 'fonts/'},
-                    {expand: true, cwd: bower + 'twitter/fonts', src: '**', dest: public_static + 'fonts/'}
+                    {expand: true, cwd: bower + 'bootstrap/fonts', src: '**', dest: public_static + 'fonts/'}
                 ]
             }
         },
@@ -98,26 +111,21 @@ module.exports = function (grunt) {
             devcss: [public_static + 'css/*.build.css']
         },
         watch: {
+            options: {
+                livereload: true
+            },
+            gruntfile: { files: 'Gruntfile.js', tasks: ['_default'] },
             templates: {
                 files: ['src/html/**/*.jade', 'src/html/**/*.json'],
-                tasks: ['jade'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['html']
             },
             less: {
                 files: 'src/less/**/*.less',
-                tasks: ['less', 'concat', 'clean:devcss'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['css']
             },
             js: {
                 files: 'src/js/**/*.js',
-                tasks: ['uglify', 'concat'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['js']
             }
         }
     });
@@ -127,10 +135,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-livereload');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jade');
 
-    grunt.registerTask('default', ['less', 'concat', 'cssmin', 'uglify', 'copy', 'jade', 'clean', 'watch']);
+    grunt.registerTask('default', ['_default', 'watch']);
+    grunt.registerTask('_default', ['css', 'js', 'html', 'copy:bower']);
+    grunt.registerTask('css', ['less', 'concat:css', 'cssmin', 'clean:devcss']);
+    grunt.registerTask('js', ['concat:js', 'uglify']);
+    grunt.registerTask('html', ['copy:local', 'jade']);
 };
