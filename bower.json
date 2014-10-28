@@ -13,6 +13,6 @@
   "dependencies": {
     "modernizr": "~2.8.3",
     "bootstrap": "~3.2.0",
-    "bootstrap-social": "4.3.0"
+    "bootstrap-social": "4.8.0"
   }
 }
